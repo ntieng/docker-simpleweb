@@ -3,11 +3,14 @@
 FROM node:alpine
 
 # Get work directory
-# Copy package.json and index.js
-# Run npm install according to package.json dependencies
 WORKDIR /usr/app
-COPY ./ ./
+
+# Copy package.json
+# Run npm install according to package.json dependencies
+# Copy all the files --> to prevent rebuilding when index.js is updated
+COPY ./package.json ./
 RUN npm install
+COPY ./ ./
 
 # Tell the image what to do when it starts as a container
 CMD ["npm", "start"]
