@@ -5,7 +5,7 @@ FROM node:alpine
 # Get work directory
 # Copy package.json and index.js
 # Run npm install according to package.json dependencies
-WORKDIR / ./
+WORKDIR /usr/app
 COPY ./ ./
 RUN npm install
 
